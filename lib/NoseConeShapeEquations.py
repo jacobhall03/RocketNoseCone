@@ -1,4 +1,25 @@
-'''Library of Nose Cone Equations'''
+'''Library of Nose Cone Shape Equations
+
+Functions:
+
+    conical_shape
+
+    biconic_shape
+
+    powerseries_shape
+
+    ogive_radius
+
+    tangent_ogive_shape
+
+    secant_ogive_shape
+
+    elliptical_shape
+
+    parabolicseries_shape
+
+    haackseries_shape
+'''
 
 import math
 
