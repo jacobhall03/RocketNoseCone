@@ -35,7 +35,7 @@ def ogive_radius(radius: float, length: float) -> float:
 
 
 def tangent_ogive_shape(x: float, radius: float, length: float) -> float:
-    '''Takes x position, radius, and length. Returns ogive y value.'''
+    '''Takes x position, radius, and length. Returns ogive y-value.'''
 
     rho = ogive_radius(radius, length)
     return math.sqrt(rho**2 - (x - length)**2) + (radius - rho)
@@ -43,7 +43,7 @@ def tangent_ogive_shape(x: float, radius: float, length: float) -> float:
 
 def secant_ogive_shape(x: float, radius: float,
                        length: float, rho: float) -> float:
-    '''Takes x position, radius, length, and rho value. Returns ogive y value.
+    '''Takes x position, radius, length, and rho value. Returns ogive y-value.
 
     rho value must be greater than twice the radius (rho > (2 * length))
     or calculation defaults to that of a tangent ogive shape.'''
@@ -59,6 +59,27 @@ def secant_ogive_shape(x: float, radius: float,
 
 
 def elliptical_shape(x: float, radius: float, length: float) -> float:
-    '''Takes x position, radius, and length. Returns elliptical y value.'''
+    '''Takes x position, radius, and length. Returns elliptical y-value.'''
 
     return radius * math.sqrt(1 - ((length - x)**2 / length**2))
+
+
+def parabolicseries_shape(x: float, radius: float,
+                          length: float, k_prime: float) -> float:
+    '''Takes x position, radius, length, and k-prime value.
+    Returns parabolic series y-value'''
+
+    return radius * ((2 * (x / length)) - k_prime * (x / length)**2) \
+        / (2 - k_prime)
+
+
+def haackseries_shape(x: float, radius: float,
+                      length: float, c: float) -> float:
+    '''Takes x-position, radius, length, and C value.
+    Returns Haack Series y-value.'''
+
+    theta = math.acos(1 - (2 * x) / length)
+    return (radius
+            * math.sqrt(theta - (math.sin(2 * theta) / 2)
+                        + (c * (math.sin(theta))**3))) \
+        / math.sqrt(math.pi)
