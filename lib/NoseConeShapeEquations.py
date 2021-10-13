@@ -19,10 +19,12 @@ Functions:
     parabolicseries_shape
 
     haackseries_shape
+
+    display_shape
 '''
 
 import math
-
+import matplotlib.pyplot as plt
 
 def conical_shape(x: float, radius: float, length: float) -> float:
     '''Takes x position, radius, and length. Returns conical y value.'''
@@ -104,3 +106,18 @@ def haackseries_shape(x: float, radius: float,
             * math.sqrt(theta - (math.sin(2 * theta) / 2)
                         + (c * (math.sin(theta))**3))) \
         / math.sqrt(math.pi)
+
+
+def display_shape(x_values: list, y_top_values: list, title: str, xlabel: str, ylabel: str):
+    y_bot_values = [-1 * y for y in y_top_values]
+    cl = [0 for x in x_values]
+    nc_length = x_values[-1]
+    plt.plot(x_values, y_top_values, 'k')
+    plt.plot(x_values, y_bot_values, 'k')
+    plt.plot(x_values, cl, 'k-.')
+    plt.grid()
+    plt.axis('scaled')
+    plt.title(title)
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.show()

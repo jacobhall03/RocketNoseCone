@@ -1,5 +1,6 @@
 '''Library of Nose Cone Center of Pressure Functions
 
+Equations are based on Barrowman's Approximations.
 'cp' is short for center of pressure'''
 
 import math
